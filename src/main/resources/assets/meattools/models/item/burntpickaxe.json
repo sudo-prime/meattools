@@ -1,0 +1,11 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "meattools:items/burntpickaxe"
+  },
+  "variants": {
+    "inventory": {
+      "model": "meattools:items/burntpickaxe"
+    }
+  }
+}

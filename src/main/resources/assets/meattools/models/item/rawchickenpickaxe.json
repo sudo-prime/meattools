@@ -1,0 +1,11 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "meattools:items/rawchickenpickaxe"
+  },
+  "variants": {
+    "inventory": {
+      "model": "meattools:items/rawchickenpickaxe"
+    }
+  }
+}

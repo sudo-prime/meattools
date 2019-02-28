@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    " B ",
+    " B "  ],
+  "key": {
+    "A": [
+      {
+        "item": "minecraft:pork",
+        "data": 0
+      }
+    ],
+    "B": [
+      {
+        "item": "minecraft:stick",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "meattools:rawporkpickaxe",
+    "data": 0
+  }
+}
