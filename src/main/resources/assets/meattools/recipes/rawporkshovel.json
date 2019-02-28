@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " A ",
-    " B ",
-    " B "  ],
+    "A",
+    "B",
+    "B"  ],
   "key": {
     "A": [
       {
-        "item": "minecraft:pork",
+        "item": "minecraft:porkchop",
         "data": 0
       }
     ],

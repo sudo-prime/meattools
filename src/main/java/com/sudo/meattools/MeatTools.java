@@ -3,6 +3,7 @@ package com.sudo.meattools;
 import com.sudo.meattools.init.ModItems;
 import com.sudo.meattools.init.ModRecipes;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,6 +28,7 @@ public class MeatTools
         System.out.println(Reference.MODID + ":preInit");
         ModItems.init();
         ModRecipes.init();
+        MinecraftForge.EVENT_BUS.register(new com.sudo.meattools.EventHandler());
     }
 
     @EventHandler

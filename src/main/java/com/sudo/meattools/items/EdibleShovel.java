@@ -17,12 +17,15 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EdibleShovel extends ItemFood {
 
@@ -33,8 +36,8 @@ public class EdibleShovel extends ItemFood {
                         String toolClass, int durability, float speed) {
         super(amount, saturation, isWolfFood);
         this.speed = speed;
-        setUnlocalizedName(name);
         setRegistryName(name);
+        setUnlocalizedName("meattools." + name);
         setHarvestLevel(toolClass, 0);
         setMaxDamage(durability);
         setMaxStackSize(1);
@@ -53,6 +56,10 @@ public class EdibleShovel extends ItemFood {
         if (block == Blocks.SNOW_LAYER)
         {
             return true;
+        }
+        else if (block == Blocks.SAND && this.getRegistryName().toString().equals("burntshovel"))
+        {
+            return false;
         }
         else
         {
@@ -85,6 +92,7 @@ public class EdibleShovel extends ItemFood {
             worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
             this.onFoodEaten(stack, worldIn, entityplayer);
             entityplayer.addStat(StatList.getObjectUseStats(this));
+            if (stack.getDisplayName().contains("Burnt")) entityplayer.attackEntityFrom(DamageSource.GENERIC, 3);
 
             if (entityplayer instanceof EntityPlayerMP)
             {
@@ -92,7 +100,7 @@ public class EdibleShovel extends ItemFood {
             }
         }
 
-        stack.damageItem(getMaxDamage(stack), entityLiving);
+        stack.damageItem(getMaxDamage(stack) + 1, entityLiving);
         return stack;
     }
 
